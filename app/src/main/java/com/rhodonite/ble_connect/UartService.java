@@ -60,7 +60,7 @@ public class UartService extends Service {
 
     public static final UUID RX_SERVICE_UUID = UUID.fromString("");//輸入UUID 例如:a00a
     public static final UUID TX_CHAR_UUID = UUID.fromString("");//write 例如:b511
-    public static final UUID RX_CHAR_UUID = UUID.fromString("");//read  例如:512
+    public static final UUID RX_CHAR_UUID = UUID.fromString("");//read  例如:b512
 
 
     // Implements callback methods for GATT events that the app cares about.  For example,
