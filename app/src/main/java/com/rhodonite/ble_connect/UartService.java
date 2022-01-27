@@ -74,12 +74,9 @@ public class UartService extends Service {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 intentAction = ACTION_GATT_CONNECTED;
                 mConnectionState = STATE_CONNECTED;
-                //gatt.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_HIGH);
                 gatt.requestMtu(256);
                 broadcastUpdate(intentAction);
                 Log.i(TAG, "Connected to GATT server.");
-
-                // Attempts to discover services after successful connection.
                 Log.i(TAG, "Attempting to start service discovery:" +
                         mBluetoothGatt.discoverServices());
 
@@ -132,7 +129,6 @@ public class UartService extends Service {
                                          BluetoothGattCharacteristic characteristic,
                                          int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                //  broadcastUpdate(EXTRA_INDEX,Serviceindex+"");
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
             }
         }
@@ -155,14 +151,10 @@ public class UartService extends Service {
                                  final BluetoothGattCharacteristic characteristic) {
         final Intent intent = new Intent(action);
 
-        // This is handling for the notification on TX Character of NUS service
 
         if (RX_CHAR_UUID.equals(characteristic.getUuid())) {
-            Log.e("Serviceindex", "" + Serviceindex);
-            // Log.d(TAG, String.format("Received RX: %d",characteristic.getValue() ));
             intent.putExtra(EXTRA_INDEX, Serviceindex);
             intent.putExtra(EXTRA_DATA, characteristic.getValue());
-
         } else {
 
         }
