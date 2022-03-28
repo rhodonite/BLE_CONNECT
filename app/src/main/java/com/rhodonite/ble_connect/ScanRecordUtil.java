@@ -19,16 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created by  Huanglinqing on 2018/9/4/004.
- */
-
 public class ScanRecordUtil {
 
-
-    /**
-     * Returns a string composed from a {@link SparseArray}.
-     */
     static String toString(SparseArray<byte[]> array) {
         if (array == null) {
             return "null";
